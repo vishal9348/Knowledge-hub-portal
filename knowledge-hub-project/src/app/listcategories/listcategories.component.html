@@ -1,6 +1,12 @@
-<div class="container">
-    <h1 class="mt-4">{{title}}</h1>
-    <div class="container">
+@if (categories.length<=0) {
+  <div class="alert">No categories found</div>
+}
+@else{
+  <div class="container">
+    <h1 class="mt-4">{{title}} (Total: {{categories.length}} )</h1>
+    </div>
+<div class="container card">
+ 
 <table class="table">
   <thead>
     <tr>
@@ -28,5 +34,5 @@
     }
   </tbody>
 </table>
-    </div>
 </div>
+}

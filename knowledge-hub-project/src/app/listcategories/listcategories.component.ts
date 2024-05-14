@@ -1,35 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../services/categories.service';
+import { Category } from '../models/category';
 
 @Component({
   selector: 'app-listcategories',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,],
   templateUrl: './listcategories.component.html',
   styleUrl: './listcategories.component.css',
 })
-export class ListcategoriesComponent {
+export class ListcategoriesComponent implements OnInit {
   title: string = 'List of Categories';
-  categories = [
-    {
-      id: 1,
-      title: 'education',
-      description: 'Good For school student',
-    },
-    {
-      id: 2,
-      title: 'Enginnering',
-      description: 'Good For Engineering student',
-    },
-    {
-      id: 3,
-      title: 'sports',
-      description: 'Good For Sprtsman',
-    },
-    {
-      id: 4,
-      title: 'Agriculture',
-      description: 'Good For Agriculture Section',
-    },
-  ];
+  categories: Category[] = [];
+  constructor(private service: CategoriesService) {}
+
+  ngOnInit(): void {
+    //1
+    // const service = new CategoriesService();
+    //2 in constructor we can inject/create object
+
+    this.service.getCategories().subscribe((res) => {
+      this.categories = res;
+    });
+  }
 }
