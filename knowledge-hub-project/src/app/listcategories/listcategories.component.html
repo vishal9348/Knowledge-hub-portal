@@ -1,0 +1,32 @@
+<div class="container">
+    <h1 class="mt-4">{{title}}</h1>
+    <div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- -----Below 17 version we r using like this----- -->
+    <!-- <tr *ngFor="let category of categories">
+      <td>{{category.id}}</td>
+      <td>{{category.title}}</td>
+      <td>{{category.description}}</td>
+    </tr> -->
+
+    <!--  ---in 17 version like this------ -->
+
+    @for (category of categories; track $index) {
+    <tr>
+      <td>{{category.id}}</td>
+      <td>{{category.title}}</td>
+      <td>{{category.description}}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+    </div>
+</div>
